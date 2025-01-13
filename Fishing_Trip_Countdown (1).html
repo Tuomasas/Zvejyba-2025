@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Trip Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e0f7fa;
+            color: #01579b;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .icons {
+            margin-top: 20px;
+        }
+        .icons img {
+            width: 80px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Countdown to Fishing Trip</h1>
+        <div class="countdown" id="countdown">Loading...</div>
+        <p>Get ready for the adventure!</p>
+        <div class="icons">
+            <img src="https://i.imgur.com/7m3TgDZ.png" alt="Shot Glass">
+            <img src="https://i.imgur.com/oTOHjCx.png" alt="Fishing Rod">
+            <img src="https://i.imgur.com/HzOjUJl.png" alt="Fish">
+        </div>
+    </div>
+
+    <script>
+        // Set the date of the fishing trip
+        const fishingTripDate = new Date("2025-01-17T00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = fishingTripDate - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "It's fishing time!";
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                document.getElementById("countdown").innerHTML = `${days} day${days !== 1 ? "s" : ""} left!`;
+            }
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
